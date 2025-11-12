@@ -19,7 +19,12 @@
   
   <ion-item-sliding *ngFor="let email of emailList">
     <ion-item-options side = "start">
+      <ion-item-option color="danger">
+      <ion-icon name="trash" slot="icon-only">
 
+      </ion-icon>
+      </ion-item-option>
+    
     </ion-item-options>
 
     <ion-item>
@@ -31,9 +36,27 @@
     </ion-item>
 
      <ion-item-options side = "end">
+      <ion-item-option color="primary">
+      <ion-icon name="archive" slot="icon-only">
+      </ion-icon>
+      </ion-item-option>
+
+      <ion-item-option color="success">
+      <ion-icon name="heart" slot="icon-only">
+      </ion-icon>
+      </ion-item-option>
 
     </ion-item-options>
   </ion-item-sliding>
 </ion-list>
+
+
+<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+  <ion-fab-button size="small" color="warning">
+    <ion-icon name="add">
+
+    </ion-icon>
+  </ion-fab-button>
+</ion-fab>
 
 </ion-content>
