@@ -14,8 +14,26 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  
+<ion-list>
+  
+  <ion-item-sliding *ngFor="let email of emailList">
+    <ion-item-options side = "start">
+
+    </ion-item-options>
+
+    <ion-item>
+      <ion-icon name="{{iconList[email.icon]}}" slot="start" color ="primary"></ion-icon>
+      <ion-label>
+        <h4>{{email.subject}}</h4>
+        <p>{{email.fromName}} ({{email.from}})</p>
+      </ion-label>
+    </ion-item>
+
+     <ion-item-options side = "end">
+
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+
 </ion-content>
