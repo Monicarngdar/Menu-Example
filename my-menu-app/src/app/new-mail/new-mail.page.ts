@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewMailPage implements OnInit {
 
+  
+
   constructor() { }
 
   ngOnInit() {
