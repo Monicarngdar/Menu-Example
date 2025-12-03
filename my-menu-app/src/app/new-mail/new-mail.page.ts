@@ -36,7 +36,7 @@ export class NewMailPage implements OnInit {
     let message = this.fg.controls.message.value;
 
 
-    this.mailService.newMail(subject,from,fromName,message);
+    this.mailService.newMail(subject,from,fromName,message);   
 
   this.setOpen(true);
   }
