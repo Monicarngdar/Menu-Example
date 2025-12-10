@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import {Storage} from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-profile',
@@ -8,9 +10,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePage implements OnInit {
 
-  constructor() { }
+  public username = "";
+  public name = "";
+  public surname = "";
 
-  ngOnInit() {
+
+  public fg = new FormGroup({
+    username: new FormControl(),
+    name: new FormControl(),
+    surname: new FormControl(),
+  });
+
+  constructor(private storage: Storage) { }
+
+  async ngOnInit() {
+    await this.storage.create();
+    await this.load();
+  }
+
+
+  async save(){
+  this.username = this.fg.controls.username.value;
+  this.name = this.fg.controls.name.value;
+  this.surname = this.fg.controls.surname.value;
+
+  await this.storage.set("username",this.username);
+  await this.storage.set("name",this.name);
+  await this.storage.set("surname",this.surname);
+
+  }
+
+
+
+  async load(){
+    this.username = await this.storage.get("username");
+    this.name = await this.storage.get("name");
+    this.surname = await this.storage.get("surname");
   }
 
 }
