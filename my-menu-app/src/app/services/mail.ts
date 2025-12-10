@@ -230,4 +230,10 @@ export class Mail {
     });
 
   }
+
+
+  setStatus(emailId:number,statusId:number){
+  this.emailList.find(x => x.id == emailId).status = statusId;
+  this.emailList.find(x => x.id == emailId).icon = statusId;
+  }
 }
