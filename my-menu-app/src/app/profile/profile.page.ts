@@ -13,12 +13,18 @@ export class ProfilePage implements OnInit {
   public username = "";
   public name = "";
   public surname = "";
+  public theme = "";
+  public themes: any[] = [
+    {id:"l" ,name:"Light Theme"},
+    {id:"d" ,name:"Dark Theme"},
+  ]
 
 
   public fg = new FormGroup({
     username: new FormControl(),
     name: new FormControl(),
     surname: new FormControl(),
+    theme: new FormControl(),
   });
 
   constructor(private storage: Storage) { }
@@ -33,19 +39,30 @@ export class ProfilePage implements OnInit {
   this.username = this.fg.controls.username.value;
   this.name = this.fg.controls.name.value;
   this.surname = this.fg.controls.surname.value;
+  this.theme = this.fg.controls.theme.value;
 
   await this.storage.set("username",this.username);
   await this.storage.set("name",this.name);
   await this.storage.set("surname",this.surname);
+  await this.storage.set("theme",this.theme);
+
+  this.toggleDarkTheme();
 
   }
-
-
 
   async load(){
     this.username = await this.storage.get("username");
     this.name = await this.storage.get("name");
     this.surname = await this.storage.get("surname");
+    this.theme = await this.storage.get("theme");
+
+    this.toggleDarkTheme();
   }
+
+  toggleDarkTheme(){
+    document.documentElement.classList.toggle("ion-palette-dark",this.theme=="d"?true:false)
+  }
+
+
 
 }
