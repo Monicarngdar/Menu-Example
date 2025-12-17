@@ -27,13 +27,22 @@
 </ion-item>
 
 
-
 <ion-item>
 <ion-input label ="Last Name" placeholder = "Borg" formControlName = "surname"></ion-input >
 </ion-item>
+
+
+<ion-item>
+  <ion-select label="Theme" formControlName = "theme"> 
+  <ion-select-option *ngFor="let t of themes" value ="{{t.id}}">{{t.name}}</ion-select-option>
+  </ion-select>
+
+</ion-item>
+
 </ion-list>
 
 <ion-button type ="submit">Save</ion-button>
+
 
 
   </form>
